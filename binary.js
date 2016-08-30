@@ -21,16 +21,46 @@
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search(search, array) {
+function binary_search(target, array) {
   // Your code here
+  var found = false;
+  var first, last, mid;
+
+  first = 0;
+  last = array.length-1;
+  mid = Math.floor(array.length / 2)-1;
+
+  while (found == false) {
+    if (target == array[mid]) {
+      found = true;
+    } else if (target < array[mid]) {
+      // move left
+      last = mid;
+      mid = Math.floor((first + last) / 2);
+    } else {
+      // move right
+      first = mid + 1;
+      mid = Math.floor((first + last) / 2)
+    }
+  }
+  return mid;
+
 }
 
 // Driver code
 
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(6, test_array_b))
+console.log("Array A : " + test_array_a);
+console.log("Array B : " + test_array_b);
 
-console.log(binary_search(10, test_array_a))
-console.log(binary_search(11, test_array_b))
-console.log(binary_search(2, test_array_a))
-console.log(binary_search(2, test_array_b))
+console.log("A -> 4 : " + binary_search(5, test_array_a))
+console.log("B -> 4 : " + binary_search(5, test_array_b))
+
+console.log("A -> 5 : " + binary_search(6, test_array_a))
+console.log("B -> 5 : " + binary_search(6, test_array_b))
+
+console.log("A -> 9 : " + binary_search(10, test_array_a))
+console.log("B -> 10 : " + binary_search(11, test_array_b))
+console.log("A -> 1 : " + binary_search(2, test_array_a))
+console.log("B -> 1 : " + binary_search(2, test_array_b))
+console.log("A -> 0 : " + binary_search(1, test_array_a))
+console.log("B -> 0 : " + binary_search(1, test_array_b))
