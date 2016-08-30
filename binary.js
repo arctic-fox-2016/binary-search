@@ -1,10 +1,10 @@
 // TESTS
 // test_array_a = (100..200).to_a
 // test_array_b = (100..201).to_a
-// puts binary_search(135, test_array) == 35
+// puts binary_cari(135, test_array) == 35
 
 // PSEUDOCODE
-// create a method, binary_search, that takes an object and an array as an input.
+// create a method, binary_cari, that takes an object and an array as an input.
 // the object is the number we are testing for to find the index position
 // the array is our data set which we will be comparing our object against to find the index position
 //establish the index position of the element in our array which is the mid-way point in our array (probably by using array.length)
@@ -21,12 +21,41 @@
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-function binary_search(search, array) {
+
+
+function binary_search(cari, array) {
   // Your code here
+  'use strict';
+
+    var awal = 0;
+    var akhir = array.length - 1;
+    var indeksSkrg;
+    var elementSkrg;
+
+    while (awal <= akhir) {
+        indeksSkrg = (awal + akhir) / 2 | 0;
+        elementSkrg = array[indeksSkrg];
+
+        if (elementSkrg < cari) {
+            awal = indeksSkrg + 1;
+        }
+        else if (elementSkrg > cari) {
+            akhir = indeksSkrg - 1;
+        }
+        else {
+            return indeksSkrg;
+            //return true;
+        }
+    }
+
+    return -1;
+    //return false;
 }
 
 // Driver code
 
+// var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 console.log(binary_search(5, test_array_a))
 console.log(binary_search(6, test_array_b))
 
