@@ -25,25 +25,27 @@ function binary_search(search, array) {
     // Your code here
     var arrMin = 0;
     var arrMax = array.length - 1;
+    var i = 0;
 
-    while (1) {
+    while (i<10) {
         if (search == array[Math.floor(((arrMax - arrMin) / 2)) + arrMin]) {
             return Math.floor(((arrMax - arrMin) / 2)) + arrMin;
-        } else if (search == array[Math.ceil(((arrMax - arrMin) / 2))+ arrMin]) {
+        } else if (search == array[Math.ceil(((arrMax - arrMin) / 2)) + arrMin]) {
             return Math.ceil(((arrMax - arrMin) / 2)) + arrMin;
         } else if (arrMax == arrMin) {
             return -1;
-        } else if (search <= array[Math.ceil((arrMax - arrMin) / 2)]) {
-            arrMax = Math.ceil((arrMax - arrMin) / 2);
+        } else if (search <= array[Math.ceil((arrMax - arrMin) / 2) + arrMin]) {
+            arrMax = Math.floor((arrMax - arrMin) / 2) + arrMin;
 
             // Test to see arrMin arrMax changes
             // console.log("arrMin: " + arrMin + ", arrMax: " + arrMax);
-        } else if (search > array[Math.ceil((arrMax - arrMin) / 2)]) {
+        } else if (search > array[Math.floor((arrMax - arrMin) / 2) + arrMin]) {
             arrMin = Math.ceil((arrMax - arrMin) / 2) + arrMin;
 
             // Test to see arrMin arrMax changes
             // console.log("arrMin: " + arrMin + ", arrMax: " + arrMax);
         }
+        i++;
     }
 }
 
