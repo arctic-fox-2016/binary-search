@@ -1,3 +1,6 @@
+
+
+"use strict"
 // TESTS
 // test_array_a = (100..200).to_a
 // test_array_b = (100..201).to_a
@@ -15,17 +18,101 @@
 // if lower, do the opposite of above.
 //continue until "half_array" index is equal to number, at which point return the index position of number chosen.
 
+var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-"use strict"
 
-var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+function indexPosition (test_array,listArray) {
 
-function binary_search(search, array) {
-  // Your code here
+  for(var i=0;i<listArray.length;i++){
+    if (test_array == listArray[i]) {
+      return i;
+
+    }
+  }
+  return -1;
 }
 
-// Driver code
+
+var splitArray = function (arr) {
+
+  var arrayLength = arr.length/2;
+  console.log(arrayLength);
+
+  var arr2 = arr.slice(0),
+  arrays = [];
+
+  while (arr2.length > 0) {
+    arrays.push(arr2.splice(0, arrayLength));
+  }
+
+
+  return arrays;
+
+}
+
+
+
+
+
+let binarySearch = (i,arr) => {
+
+  let low =0;
+  let high = arr.length-1;
+  let divide ;
+  let arrDivide;
+
+
+  while (low<= high) {
+     divide = Math.floor((low+high)/2);
+     arrDivide = arr[divide];
+
+     if ( arrDivide < i ){
+       low = divide+1;
+
+     }
+     else if ( arrDivide > i){
+       high = divide -1;
+     }
+     else {
+       return divide;
+     }
+
+
+  }
+  return -1
+
+
+
+}
+
+
+
+
+/*
+function binarySearch (i,arr) {
+  var low = 0;
+  var high = arr.length -1 ;
+  var divide = Math.floor((low+high)/2);
+  var arrDivide = arr[divide];
+  while(low <= high) {
+    if (arrDivide < i) {
+      low = divide+1;
+    }else if (arrDivide > i)
+    {
+      high = divide-1;
+    }else {
+      return divide
+    }
+  }
+  return -1;
+
+}*/
+
+
+console.log(binarySearch(7, test_array_a))
+
+
 
 console.log(binary_search(5, test_array_a))
 console.log(binary_search(6, test_array_b))
