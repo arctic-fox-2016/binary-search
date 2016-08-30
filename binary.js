@@ -27,8 +27,10 @@ function binary_search(search, array) {
     var arrMax = array.length - 1;
 
     while (1) {
-        if (search == array[((arrMax - arrMin) / 2) + arrMin]) {
-            return ((arrMax - arrMin) / 2) + arrMin;
+        if (search == array[Math.floor(((arrMax - arrMin) / 2)) + arrMin]) {
+            return Math.floor(((arrMax - arrMin) / 2)) + arrMin;
+        } else if (search == array[Math.ceil(((arrMax - arrMin) / 2))+ arrMin]) {
+            return Math.ceil(((arrMax - arrMin) / 2)) + arrMin;
         } else if (arrMax == arrMin) {
             return -1;
         } else if (search <= array[Math.ceil((arrMax - arrMin) / 2)]) {
