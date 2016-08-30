@@ -23,6 +23,36 @@ var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search(search, array) {
   // Your code here
+  var angka = 0,
+      start = 0,
+      end = array.length-1;
+
+  angka = binary_search_loop(start,end,search,array);
+  return angka;
+}
+function binary_search_loop(start,end, search,array) {
+  var result = 0;
+  var idx = ~~((end+start)/2);
+  var startloop = start,
+      endloop = end;
+  //jika pencarian lebih kecil iterasi start=0 dan end=patokan
+  if(array[idx]>search){
+    if(end-start == 1) {
+      result = endloop;
+    } else{
+      return binary_search_loop(startloop,idx,search,array);
+    }
+  }//jika pencarian lebih kecil iterasi start=patokan dan end tetap
+  else if(array[idx]<search){
+    if(end-start == 1) {
+      result = endloop;
+    } else {
+      return binary_search_loop(idx,endloop,search,array);
+    }//jika pencarian = patokan kemablikan nilai patokan
+  } else if(array[idx] == search){
+    result = idx;
+  }
+  return result;
 }
 
 // Driver code
