@@ -18,17 +18,24 @@
 
 "use strict"
 
+var test_array_s = [1, 2, 3, 4, 5];
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search(search, array) {
-  // Your code here
+  var pos_start = 0;
+  var pos_end = array.length;
+  while(true){
+    var half_position = Math.floor((pos_start + pos_end) / 2);
+    if(search == array[half_position]) return half_position;
+    else if(search > array[half_position]) pos_start = half_position;
+    else pos_end = half_position;
+  }
 }
 
 // Driver code
 
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(6, test_array_b))
+console.log(binary_search(6, test_array_a))
 
 console.log(binary_search(10, test_array_a))
 console.log(binary_search(11, test_array_b))
