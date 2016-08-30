@@ -18,14 +18,61 @@
 
 "use strict"
 
-var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+let test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search(search, array) {
+
   // Your code here
+
+let lowest = 0;
+let highest = array.length-1;
+let mid;
+let arraymid;
+
+  while(lowest <= highest){
+    mid = Math.floor((highest + lowest) / 2);
+    arraymid = array[mid];
+
+    if(arraymid < search){
+      lowest = mid + 1;
+    }else if(arraymid > search){
+      highest = mid - 1;
+    }else{
+      return mid;
+    }
+  }
+  return -1;
 }
 
+
+/*
+  let lowest = 0;
+  let highest = array.length-1;
+
+    while(highest <= array[]){
+      let mid = lowest + (highest - lowest) / 2;
+
+      if(highest < lowest){
+        hasil = "Hasil tak ditemukan";
+      }else if(array[mid] < search){
+        lowest = mid + 1;
+      }else if(array[mid] > search){
+        highest = mid - 1;
+      }else if(array[mid] == search){
+        hasil = "Hasil ditemukan pada index ke-" + array[mid];
+      }
+    }
+  }
+  return hasil;
+*/
+
+
+
 // Driver code
+
+
+console.log(binary_search(7, test_array_a))
 
 console.log(binary_search(5, test_array_a))
 console.log(binary_search(6, test_array_b))
