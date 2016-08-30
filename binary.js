@@ -20,10 +20,31 @@
 
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+function binary_search(searchElement, searchArray) {
+  var stop = searchArray.length;
+  var last, p = 0,
+      delta = 0;
 
-function binary_search(search, array) {
-  // Your code here
+  do {
+      last = p;
+
+      if (searchArray[p] > searchElement) {
+          stop = p + 1;
+          p -= delta;
+      } else if (searchArray[p] === searchElement) {
+          // FOUND A MATCH!
+          return p;
+      }
+
+      delta = Math.floor((stop - p) / 2);
+      p += delta; //if delta = 0, p is not modified and loop exits
+
+  }while (last !== p);
+
+  return -1; //nothing found
 }
+
+
 
 // Driver code
 
